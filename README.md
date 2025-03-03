@@ -16,7 +16,7 @@ Before you begin, ensure you have:
 Create a `.env` file in the root directory with the following variables:
 ```env
 # Database
-DATABASE_URL="postgresql://user:password@localhost:5432/movie_ticket_booking"
+DATABASE_URL=
 
 # Next Auth
 AUTH_URL="http://localhost:3000"
