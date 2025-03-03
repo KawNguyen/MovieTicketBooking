@@ -1,12 +1,11 @@
 import Credentials from "next-auth/providers/credentials";
-import GitHub from "next-auth/providers/github";
+
 import type { NextAuthConfig } from "next-auth";
 import { prisma } from "@/lib/prisma";
 import bcrypt from "bcryptjs";
 
 export default {
   providers: [
-    GitHub,
     Credentials({
       name: "Credentials",
       credentials: {
@@ -26,7 +25,7 @@ export default {
           return null;
         }
 
-        const isPasswordValid = bcrypt.compare(
+        const isPasswordValid = await bcrypt.compare(
           credentials.password as string,
           user.password as string
         );
