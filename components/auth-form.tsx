@@ -27,6 +27,7 @@ import {
 import { cn } from "@/lib/utils";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
+import { signIn } from "next-auth/react";
 
 interface Props<T extends FieldValues> {
   type: "SIGN_IN" | "SIGN_UP";
@@ -125,13 +126,15 @@ const AuthForm = <T extends FieldValues>({
           <Link
             href={isSignIn ? "/auth/sign-up" : "/auth/sign-in"}
             className={cn(
-              "font-semibold hover:underline hover:underline-offset-4",
+              "font-semibold hover:underline hover:underline-offset-4"
             )}
           >
             {isSignIn ? "Sign up" : "Sign in"}
           </Link>
         </span>
       </div>
+
+      <Button variant="secondary" onClick={() => signIn("google")}>Signin with Google</Button>
     </div>
   );
 };

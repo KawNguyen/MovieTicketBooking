@@ -23,7 +23,7 @@ export const signOutCredentials = async () => {
 };
 
 export const signUp = async (
-  values: AuthCredentials,
+  values: AuthCredentials
 ): Promise<AuthActionResult> => {
   const validatedFields = signUpSchema.safeParse(values);
 
@@ -76,7 +76,7 @@ export const signUp = async (
 };
 
 export const signInWithCredential = async (
-  values: Pick<AuthCredentials, "email" | "password">,
+  values: Pick<AuthCredentials, "email" | "password">
 ) => {
   const { email, password } = values;
 
@@ -112,6 +112,24 @@ export const signInWithCredential = async (
       }
     }
 
+    return {
+      success: false,
+      error: "Something went wrong!",
+      message: error.message,
+    };
+  }
+};
+
+export const signInWithGoogle = async () => {
+  try {
+    console.log("Ab");
+
+    await signIn("google", {
+      redirectTo: "/",
+    });
+    console.log("cd");
+    return { success: true };
+  } catch (error: any) {
     return {
       success: false,
       error: "Something went wrong!",

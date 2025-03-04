@@ -8,9 +8,9 @@ declare module "next-auth" {
     } & DefaultSession["user"];
   }
 
-  interface User {
-    role: string;
-  }
+   interface User {
+     role?: string;
+   }
 }
 
 declare module "next-auth/jwt" {

@@ -1,11 +1,17 @@
 import Credentials from "next-auth/providers/credentials";
+import Google from "next-auth/providers/google";
 
 import type { NextAuthConfig } from "next-auth";
 import { prisma } from "@/lib/prisma";
 import bcrypt from "bcryptjs";
+import { config } from "./config";
 
 export default {
   providers: [
+    Google({
+      clientId: config.env.google.clientId,
+      clientSecret: config.env.google.clientSecret,
+    }),
     Credentials({
       name: "Credentials",
       credentials: {

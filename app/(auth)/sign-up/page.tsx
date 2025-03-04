@@ -1,4 +1,4 @@
-"use client";
+"use client"
 
 import { signUpSchema } from "@/lib/validation";
 import { signUp } from "@/actions/auth";
